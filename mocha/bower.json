@@ -1,0 +1,17 @@
+{
+  "name": "tk-web-storage",
+  "description": "A test library for Web Storage APIs.",
+  "main": "src/index.js",
+  "authors": [
+    "Thomas Kerbrat <kerbrat@outlook.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "tk-web-storage",
+  "version": "0.0.0",
+  "description": "A test library for Web Storage APIs.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node .\\node_modules\\local-web-server\\bin\\cli.js"
+  },
+  "author": "Thomas Kerbrat <kerbrat@outlook.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "local-web-server": "^1.2.6",
+    "mocha": "^3.0.2"
+  }
+}
