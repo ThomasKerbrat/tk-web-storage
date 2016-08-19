@@ -95,5 +95,23 @@
     return this.storage.setItem(keyName, keyValue)
   }
 
+  TKWebStorageLibrary.prototype.remove = _removeItem
+  TKWebStorageLibrary.prototype.removeItem = _removeItem
+
+  /**
+   * @name TKWebStorageLibrary.remove
+   * @param {string} keyName The name of the key to remove the value.
+   * @returns {null|Object} The value removed for the keyName key, or null if nothing was found.
+   */
+  function _removeItem(keyName, keyValue) {
+    var value = this.get(keyName)
+    if (value === null) {
+      return null
+    }
+
+    this.storage.removeItem(keyName, keyValue)
+    return value
+  }
+
   return TKWebStorageLibrary
 })

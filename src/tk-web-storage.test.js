@@ -103,11 +103,8 @@ describe('TKWebStorageLibrary', function () {
         window.localStorage.clear()
       })
 
-      it('should be defined.', function () {
+      it('should be defined and alias getItem.', function () {
         assert.isDefined(sut.get)
-      })
-
-      it('should alias getItem.', function () {
         assert.strictEqual(sut.get, sut.getItem)
       })
 
@@ -125,11 +122,8 @@ describe('TKWebStorageLibrary', function () {
         window.localStorage.clear()
       })
 
-      it('should be defined.', function () {
+      it('should be defined alias setItem.', function () {
         assert.isDefined(sut.set)
-      })
-
-      it('should alias setItem.', function () {
         assert.strictEqual(sut.set, sut.setItem)
       })
 
@@ -143,6 +137,44 @@ describe('TKWebStorageLibrary', function () {
         assert.strictEqual(window.localStorage.getItem('key'), 'value')
         sut.set('key', 'value2')
         assert.strictEqual(window.localStorage.getItem('key'), 'value2')
+      })
+    })
+
+    describe('remove', function () {
+
+      var sut
+
+      beforeEach('clear all entries', function () {
+        sut = new ws()
+        window.localStorage.clear()
+      })
+
+      it('should be defined and alias removeItem.', function () {
+        assert.isDefined(sut.remove)
+        assert.strictEqual(sut.remove, sut.removeItem)
+      })
+
+      it('should remove an item.', function () {
+        window.localStorage.setItem('key', 'value')
+        assert.strictEqual(window.localStorage.getItem('key'), 'value')
+
+        sut.remove('key')
+        assert.strictEqual(window.localStorage.getItem('key'), null)
+      })
+
+      it('should return the value removed.', function () {
+        window.localStorage.setItem('key', 'value')
+        assert.strictEqual(window.localStorage.getItem('key'), 'value')
+
+        var removed_value = sut.remove('key')
+        assert.strictEqual(removed_value, 'value')
+      })
+
+      it('should return null if nothing was to be removed.', function () {
+        assert.strictEqual(window.localStorage.getItem('key'), null)
+
+        var removed_value = sut.remove('key')
+        assert.strictEqual(removed_value, null)
       })
     })
 
