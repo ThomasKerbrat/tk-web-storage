@@ -18,12 +18,12 @@
  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-void function (get_TKWebStorageLibrary) {
+!(function (window, get_TKWebStorageLibrary) {
   if (window && !window.ws) {
     window.ws = get_TKWebStorageLibrary()
   }
   // TODO: AngularJS
-} (function () {
+})(this, function () {
 
   /**
    * @param {string} type The name of the storage to test.
@@ -59,6 +59,12 @@ void function (get_TKWebStorageLibrary) {
       }
     }
 
+    if (this.storageType === 'localStorage' && !this.localStorageAvailable) {
+      throw new Error('"localStorage" not enabled or available in the current browser.')
+    }
+    if (this.storageType === 'sessionStorage' && !this.sessionStorageAvailable) {
+      throw new Error('"sessionStorage" not enabled or available in the current browser.')
+    }
     this.storage = window[this.storageType]
 
   }

@@ -24,18 +24,31 @@ describe('TKWebStorageLibrary', function () {
 
   describe('constructor', function () {
     it('should accept "localStorage" or "sessionStorage" in first parameter.', function () {
-      try {
-        assert.doesNotThrow(function () {
-          var sut1 = new ws('localStorage');
-          var sut2 = new ws('sessionStorage');
-        }, Error)
-      } catch (error) { }
+      assert.doesNotThrow(function () {
+        var sut1 = new ws('localStorage')
+        var sut2 = new ws('sessionStorage')
+      }, Error)
     })
 
     it('should throw for any other value in first parameter.', function () {
       assert.throw(function () {
-        var sut = new ws(0);
-      }, Error)
+        var sut = new ws(0)
+      }, Error, /Constructor only accepts "localStorage" and "sessionStorage" for the storage parameter./)
+    })
+
+    it('should throw an error if the storage type is not available.', function () {
+      assert.throw(function () {
+        var window_ls = window.localStorage
+        delete window.localStorage
+
+        try {
+          var sut = new ws('localStorage')
+        } catch (error) {
+          throw error
+        } finally {
+          window.localStorage = window_ls
+        }
+      }, Error, /"localStorage" not enabled or available in the current browser./)
     })
   })
 
