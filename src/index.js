@@ -26,6 +26,7 @@
 })(this, function () {
 
   /**
+   * @description Checks the availability of the given storage on the window object and try to use the API to test for zero quota.
    * @param {string} type The name of the storage to test.
    * @return {boolean} Returns if the browser supports and make available the tested storage.
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#Feature-detecting_localStorage
@@ -72,9 +73,6 @@
   TKWebStorageLibrary.prototype.get = _getItem
   TKWebStorageLibrary.prototype.getItem = _getItem
 
-  TKWebStorageLibrary.prototype.set = _setItem
-  TKWebStorageLibrary.prototype.setItem = _setItem
-
   /**
    * @name TKWebStorageLibrary.get
    * @param {string} keyName The name of the key to get the value.
@@ -83,6 +81,9 @@
   function _getItem(keyName) {
     return this.storage.getItem(keyName)
   }
+
+  TKWebStorageLibrary.prototype.set = _setItem
+  TKWebStorageLibrary.prototype.setItem = _setItem
 
   /**
    * @name TKWebStorageLibrary.set
