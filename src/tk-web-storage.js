@@ -47,13 +47,24 @@
   }
 
   /**
+   * @class TKWebStorage
    * @param {string} storage The type of storage you want to use. Possible values: "localStorage" (default) and "sessionStorage".
    */
-  function TKWebStorageLibrary(storage) {
+  function TKWebStorage(storage) {
 
+    /**
+     * @member {boolean} localStorageAvailable Tells if the `window.localStorage` is supported and available.
+     */
     this.localStorageAvailable = storageAvailable('localStorage')
+
+    /**
+     * @member {boolean} sessionStorageAvailable Tells if the `window.sessionStorage` is supported and available.
+     */
     this.sessionStorageAvailable = storageAvailable('sessionStorage')
 
+    /**
+     * @member {string} storageType The storage choosed when instanciating. Default to `'localStorage'`.
+     */
     this.storageType = 'localStorage'
     if (storage !== undefined) {
       if (['localStorage', 'sessionStorage'].indexOf(storage) === -1) {
@@ -69,16 +80,21 @@
     if (this.storageType === 'sessionStorage' && !this.sessionStorageAvailable) {
       throw new Error('"sessionStorage" not enabled or available in the current browser.')
     }
+
+    /**
+     * @member {string} storage The underlying storage for the current browser.
+     */
     this.storage = window[this.storageType]
 
   }
 
 
 
-  TKWebStorageLibrary.prototype.get = _getItem
-  TKWebStorageLibrary.prototype.getItem = _getItem
+  TKWebStorage.prototype.get = _getItem
+  TKWebStorage.prototype.getItem = _getItem
 
   /**
+   * @description Get the value for the given key.
    * @name TKWebStorageLibrary.get
    * @param {string} keyName The name of the key to get the value.
    * @returns {null|string} The value stored under the keyName key, or null if nothing was found.
@@ -89,14 +105,15 @@
 
 
 
-  TKWebStorageLibrary.prototype.set = _setItem
-  TKWebStorageLibrary.prototype.setItem = _setItem
+  TKWebStorage.prototype.set = _setItem
+  TKWebStorage.prototype.setItem = _setItem
 
   /**
+   * @description Set the given value with the given key in the current storage.
    * @name TKWebStorageLibrary.set
    * @param {string} keyName The name of the key to set the value.
    * @param {string} keyValue The value to set.
-   * @returns {null|string} The value stored under the keyName key, or null if nothing was found.
+   * @returns {string} The value stored under the keyName key.
    */
   function _setItem(keyName, keyValue) {
     return this.storage.setItem(keyName, keyValue)
@@ -104,29 +121,31 @@
 
 
 
-  TKWebStorageLibrary.prototype.remove = _removeItem
-  TKWebStorageLibrary.prototype.removeItem = _removeItem
+  TKWebStorage.prototype.remove = _removeItem
+  TKWebStorage.prototype.removeItem = _removeItem
 
   /**
+   * @description Remove an item for the given key.
    * @name TKWebStorageLibrary.remove
    * @param {string} keyName The name of the key to remove the value.
-   * @returns {null|Object} The value removed for the keyName key, or null if nothing was found.
+   * @returns {null|number|string} The value removed for the given key, or null if nothing was found.
    */
-  function _removeItem(keyName, keyValue) {
+  function _removeItem(keyName) {
     var value = this.get(keyName)
     if (value === null) {
       return null
     }
 
-    this.storage.removeItem(keyName, keyValue)
+    this.storage.removeItem(keyName)
     return value
   }
 
 
 
-  TKWebStorageLibrary.prototype.key = _key
+  TKWebStorage.prototype.key = _key
 
   /**
+   * @description Get the key name at given index.
    * @name TKWebStorageLibrary.key
    * @param {number} keyIndex The index of the key to retrieve.
    * @returns {null|string} The key at keyIndex key, or null if index is out of bound.
@@ -137,9 +156,10 @@
 
 
 
-  TKWebStorageLibrary.prototype.clear = _clear
+  TKWebStorage.prototype.clear = _clear
 
   /**
+   * @description Clear all items in the storage.
    * @name TKWebStorageLibrary.clear
    * @returns {number} The number of item cleared.
    */
@@ -148,5 +168,5 @@
     return this.storage.clear(), length
   }
 
-  return TKWebStorageLibrary
+  return TKWebStorage
 }))

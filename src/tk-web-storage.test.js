@@ -1,15 +1,15 @@
 var assert = chai.assert
 
 describe('window', function () {
-  it('should be defined', function () {
+  it('should be defined.', function () {
     assert.isDefined(window)
   })
 
-  it('should expose localStorage', function () {
+  it('should expose localStorage.', function () {
     assert.isDefined(localStorage)
   })
 
-  it('should expose sessionStorage', function () {
+  it('should expose sessionStorage.', function () {
     assert.isDefined(sessionStorage)
   })
 })
@@ -101,7 +101,7 @@ describe('TKWebStorageLibrary', function () {
       })
     })
 
-    describe('localStorage', function () {
+    describe('localStorageAvailable', function () {
       var sut
 
       beforeEach('clear all entries', function () {
@@ -118,7 +118,7 @@ describe('TKWebStorageLibrary', function () {
       })
     })
 
-    describe('sessionStorage', function () {
+    describe('sessionStorageAvailable', function () {
       var sut
 
       beforeEach('clear all entries', function () {
@@ -153,6 +153,12 @@ describe('TKWebStorageLibrary', function () {
         assert.strictEqual(sut.get, sut.getItem)
       })
 
+      it('should return value for key', function () {
+        window.localStorage.setItem('key', 'value')
+        var result = sut.get('key')
+        assert.strictEqual(result, 'value')
+      })
+
       it('should return null if a key does not exists.', function () {
         assert.strictEqual(sut.get('a key that does not exists'), null)
       })
@@ -171,12 +177,12 @@ describe('TKWebStorageLibrary', function () {
         assert.strictEqual(sut.set, sut.setItem)
       })
 
-      it('should set an item in the localStorage.', function () {
+      it('should set an item.', function () {
         sut.set('key', 'value')
         assert.strictEqual(window.localStorage.getItem('key'), 'value')
       })
 
-      it('should set a value even if the key is already present', function () {
+      it('should update an item.', function () {
         window.localStorage.setItem('key', 'value')
         assert.strictEqual(window.localStorage.getItem('key'), 'value')
         sut.set('key', 'value2')
