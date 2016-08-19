@@ -110,7 +110,7 @@ Get the key name at given index.
 1. `keyIndex`: `number` The index of the key to retrieve.
 
 #### Returns
-`null|string` The key at keyIndex key, or null if index is out of bound.
+`null|string` The key at keyIndex index, or null if index is out of bound.
 
 ### TKWebStorage.clear()
 Clear all items in the storage.

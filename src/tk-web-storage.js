@@ -148,7 +148,7 @@
    * @description Get the key name at given index.
    * @name TKWebStorage.key
    * @param {number} keyIndex The index of the key to retrieve.
-   * @returns {null|string} The key at keyIndex key, or null if index is out of bound.
+   * @returns {null|string} The key at keyIndex index, or null if index is out of bound.
    */
   function _key(keyIndex) {
     return this.storage.key(keyIndex)
