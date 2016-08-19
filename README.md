@@ -34,8 +34,8 @@ var store = new ws()
 
 store.set('key', 21)   // returns: undefined
 store.get('key')       // returns: 21
-store.remove('key2')   // returns: 21
-store.key(1)           // returns: 'key2'
+store.key(0)           // returns: 'key'
+store.remove('key')   // returns: 21
 store.clear()          // returns: 1
 ```
 
