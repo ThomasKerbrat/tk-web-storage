@@ -18,15 +18,15 @@
  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-!(function (window, get_TKWebStorageLibrary) {
+(function (window, factory) {
   if (typeof angular === 'object') {
     // TODO: AngularJS provider.
     // angular.module('TKWebStorageLibrary', [])
     //   .provider('TKWebStorage', [function () { }])
   } else {
-    window.ws = get_TKWebStorageLibrary()
+    window.ws = factory()
   }
-})(this, function get_TKWebStorageLibrary() {
+} (this, function TKWebStorageLibraryFactory() {
 
   /**
    * @description Checks the availability of the given storage on the window object and try to use the API to test for zero quota.
@@ -122,5 +122,18 @@
     return value
   }
 
+
+
+  TKWebStorageLibrary.prototype.key = _key
+
+  /**
+   * @name TKWebStorageLibrary.key
+   * @param {number} keyIndex The index of the key to retrieve.
+   * @returns {null|string} The key at keyIndex key, or null if index is out of bound.
+   */
+  function _key(keyIndex) {
+    return this.storage.key(keyIndex)
+  }
+
   return TKWebStorageLibrary
-})
+}))

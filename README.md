@@ -18,19 +18,21 @@ Include the script in your HTML:
 When you load the library in your browser, as of 0.0.0, it register the `ws` global variable on the `window` object.
 This `ws` variable holds the `TKWebStorageLibrary` type and must be instantiated in order to be used.
 
-`TKWebStorageLibrary` has the same API as a `Storage` object (except for `Storage.key()`).
+`TKWebStorageLibrary` has the same API as a `Storage` object.
 It also exposes a simpler API (function name without the "Item" suffix).
 
 ``` javascript
 var store = new ws()
 
 store.setItem('key', 42)
-store.getItem('key') // returns: 42
-store.removeItem('key') // returns: 42
+store.getItem('key')      // returns: 42
+store.removeItem('key')   // returns: 42
+store.key(0)              // returns: 'key'
 
 store.set('key2', 21)
-store.get('key2') // returns: 21
-store.remove('key2') // returns: 21
+store.get('key2')         // returns: 21
+store.remove('key2')      // returns: 21
+store.key(1)              // returns: 'key2'
 ```
 
 ## What type of storage?

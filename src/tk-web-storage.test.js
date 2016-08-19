@@ -53,7 +53,6 @@ describe('TKWebStorageLibrary', function () {
   })
 
   describe('property', function () {
-
     var sut = new ws()
 
     describe('storageType', function () {
@@ -96,7 +95,6 @@ describe('TKWebStorageLibrary', function () {
   describe('prototype', function () {
 
     describe('get', function () {
-
       var sut
 
       beforeEach('clear all entries', function () {
@@ -115,7 +113,6 @@ describe('TKWebStorageLibrary', function () {
     })
 
     describe('set', function () {
-
       var sut
 
       beforeEach('clear all entries', function () {
@@ -142,7 +139,6 @@ describe('TKWebStorageLibrary', function () {
     })
 
     describe('remove', function () {
-
       var sut
 
       beforeEach('clear all entries', function () {
@@ -179,5 +175,53 @@ describe('TKWebStorageLibrary', function () {
       })
     })
 
+    describe('key', function () {
+      var sut
+
+      beforeEach('clear all entries', function () {
+        sut = new ws()
+        window.localStorage.clear()
+      })
+
+      it('should be defined.', function () {
+        assert.isDefined(sut.key)
+      })
+
+      it('should get all the keys in the storage.', function () {
+        // Arrange
+
+        var keyValues = [
+          { key: 'key1', value: 'value1' },
+          { key: 'key2', value: 'value2' },
+          { key: 'key3', value: 'value3' },
+        ]
+
+        window.localStorage.setItem(keyValues[0].key, keyValues[0].value)
+        window.localStorage.setItem(keyValues[1].key, keyValues[1].value)
+        window.localStorage.setItem(keyValues[2].key, keyValues[2].value)
+
+        // Act
+
+        for (var index = 0; index < window.localStorage.length; index++) {
+          var element = sut.key(index)
+          for (var index2 = keyValues.length - 1; index2 >= 0; index2--) {
+            if (keyValues[index2] && keyValues[index2].key === element) {
+              keyValues.splice(index2, 1)
+            }
+          }
+        }
+
+        // Assert
+
+        assert.strictEqual(keyValues.length, 0)
+      })
+
+      it('should return null if index is out of bound.', function () {
+        // Remember the clean in the beforeEach.
+        assert.strictEqual(sut.key(-1), null)
+        assert.strictEqual(sut.key(Infinity), null)
+        assert.strictEqual(sut.key(-Infinity), null)
+      })
+    })
   })
 })
