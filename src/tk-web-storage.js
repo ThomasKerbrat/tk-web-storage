@@ -26,7 +26,7 @@
   } else {
     window.ws = factory()
   }
-} (this, function TKWebStorageLibraryFactory() {
+} (this, function TKWebStorageFactory() {
 
   /**
    * @description Checks the availability of the given storage on the window object and try to use the API to test for zero quota.
@@ -95,7 +95,7 @@
 
   /**
    * @description Get the value for the given key.
-   * @name TKWebStorageLibrary.get
+   * @name TKWebStorage.get
    * @param {string} keyName The name of the key to get the value.
    * @returns {null|string} The value stored under the keyName key, or null if nothing was found.
    */
@@ -110,7 +110,7 @@
 
   /**
    * @description Set the given value with the given key in the current storage.
-   * @name TKWebStorageLibrary.set
+   * @name TKWebStorage.set
    * @param {string} keyName The name of the key to set the value.
    * @param {string} keyValue The value to set.
    * @returns {string} The value stored under the keyName key.
@@ -126,7 +126,7 @@
 
   /**
    * @description Remove an item for the given key.
-   * @name TKWebStorageLibrary.remove
+   * @name TKWebStorage.remove
    * @param {string} keyName The name of the key to remove the value.
    * @returns {null|number|string} The value removed for the given key, or null if nothing was found.
    */
@@ -146,7 +146,7 @@
 
   /**
    * @description Get the key name at given index.
-   * @name TKWebStorageLibrary.key
+   * @name TKWebStorage.key
    * @param {number} keyIndex The index of the key to retrieve.
    * @returns {null|string} The key at keyIndex key, or null if index is out of bound.
    */
@@ -160,7 +160,7 @@
 
   /**
    * @description Clear all items in the storage.
-   * @name TKWebStorageLibrary.clear
+   * @name TKWebStorage.clear
    * @returns {number} The number of item cleared.
    */
   function _clear() {
