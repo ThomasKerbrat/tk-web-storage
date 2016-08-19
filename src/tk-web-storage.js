@@ -23,7 +23,7 @@
     window.ws = get_TKWebStorageLibrary()
   }
   // TODO: AngularJS
-})(this, function () {
+})(this, function get_TKWebStorageLibrary() {
 
   /**
    * @description Checks the availability of the given storage on the window object and try to use the API to test for zero quota.
