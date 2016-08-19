@@ -70,7 +70,7 @@ The underlying storage for the current browser.
 Summary
 
 - [TKWebStorage.get(keyName)](#tkwebstoragegetkeyname)
-- [TKWebStorage.set(keyName, keyValue)](#tkwebstoragesetkeynamekeyvalue)
+- [TKWebStorage.set(keyName, keyValue)](#tkwebstoragesetkeyname-keyvalue)
 - [TKWebStorage.remove(keyName)](#tkwebstorageremovekeyname)
 - [TKWebStorage.key(keyIndex)](#tkwebstoragekeykeyindex)
 - [TKWebStorage.clear()](#tkwebstorageclear)
