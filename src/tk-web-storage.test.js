@@ -52,10 +52,17 @@ describe('TKWebStorageLibrary', function () {
     })
   })
 
+
   describe('property', function () {
-    var sut = new ws()
 
     describe('storageType', function () {
+      var sut
+
+      beforeEach('clear all entries', function () {
+        sut = new ws()
+        window.localStorage.clear()
+      })
+
       it('should be defined.', function () {
         assert.isDefined(sut.storageType)
       })
@@ -71,7 +78,37 @@ describe('TKWebStorageLibrary', function () {
       })
     })
 
+    describe('storage', function () {
+      var sut
+
+      beforeEach('clear all entries', function () {
+        sut = new ws()
+        window.localStorage.clear()
+      })
+
+      it('should be defined.', function () {
+        assert.isDefined(sut.storage)
+      })
+
+      it('should default to "localStorage".', function () {
+        var sut = new ws()
+        assert.strictEqual(sut.storage, window.localStorage)
+      })
+
+      it('should accept "sessionStorage".', function () {
+        var sut = new ws('sessionStorage')
+        assert.strictEqual(sut.storage, window.sessionStorage)
+      })
+    })
+
     describe('localStorage', function () {
+      var sut
+
+      beforeEach('clear all entries', function () {
+        sut = new ws()
+        window.localStorage.clear()
+      })
+
       it('should be defined.', function () {
         assert.isDefined(sut.localStorageAvailable)
       })
@@ -82,6 +119,13 @@ describe('TKWebStorageLibrary', function () {
     })
 
     describe('sessionStorage', function () {
+      var sut
+
+      beforeEach('clear all entries', function () {
+        sut = new ws()
+        window.localStorage.clear()
+      })
+
       it('should be defined.', function () {
         assert.isDefined(sut.sessionStorageAvailable)
       })
@@ -90,7 +134,9 @@ describe('TKWebStorageLibrary', function () {
         assert.strictEqual(sut.sessionStorageAvailable, true)
       })
     })
+
   })
+
 
   describe('prototype', function () {
 
@@ -189,7 +235,6 @@ describe('TKWebStorageLibrary', function () {
 
       it('should get all the keys in the storage.', function () {
         // Arrange
-
         var keyValues = [
           { key: 'key1', value: 'value1' },
           { key: 'key2', value: 'value2' },
@@ -201,7 +246,6 @@ describe('TKWebStorageLibrary', function () {
         window.localStorage.setItem(keyValues[2].key, keyValues[2].value)
 
         // Act
-
         for (var index = 0; index < window.localStorage.length; index++) {
           var element = sut.key(index)
           for (var index2 = keyValues.length - 1; index2 >= 0; index2--) {
@@ -212,7 +256,6 @@ describe('TKWebStorageLibrary', function () {
         }
 
         // Assert
-
         assert.strictEqual(keyValues.length, 0)
       })
 
@@ -223,5 +266,62 @@ describe('TKWebStorageLibrary', function () {
         assert.strictEqual(sut.key(-Infinity), null)
       })
     })
+
+    describe('clear', function () {
+      var sut
+
+      beforeEach('clear all entries', function () {
+        sut = new ws()
+        window.localStorage.clear()
+      })
+
+      it('should be defined.', function () {
+        assert.isDefined(sut.clear)
+      })
+
+      it('should clear all items.', function () {
+        // Arrange
+        var keyValues = [
+          { key: 'key1', value: 'value1' },
+          { key: 'key2', value: 'value2' },
+          { key: 'key3', value: 'value3' },
+        ]
+
+        window.localStorage.setItem(keyValues[0].key, keyValues[0].value)
+        window.localStorage.setItem(keyValues[1].key, keyValues[1].value)
+        window.localStorage.setItem(keyValues[2].key, keyValues[2].value)
+
+        assert.strictEqual(sut.storage.length, 3)
+
+        // Act
+        sut.clear()
+
+        // Assert
+        assert.strictEqual(sut.storage.length, 0)
+      })
+
+      it('should return the number of item cleared.', function () {
+        // Arrange
+        var keyValues = [
+          { key: 'key1', value: 'value1' },
+          { key: 'key2', value: 'value2' },
+          { key: 'key3', value: 'value3' },
+        ]
+
+        window.localStorage.setItem(keyValues[0].key, keyValues[0].value)
+        window.localStorage.setItem(keyValues[1].key, keyValues[1].value)
+        window.localStorage.setItem(keyValues[2].key, keyValues[2].value)
+
+        assert.strictEqual(sut.storage.length, 3)
+
+        // Act
+        var result = sut.clear()
+
+        // Assert
+        assert.strictEqual(result, 3)
+      })
+    })
+
   })
+
 })

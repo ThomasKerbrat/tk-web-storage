@@ -135,5 +135,18 @@
     return this.storage.key(keyIndex)
   }
 
+
+
+  TKWebStorageLibrary.prototype.clear = _clear
+
+  /**
+   * @name TKWebStorageLibrary.clear
+   * @returns {number} The number of item cleared.
+   */
+  function _clear() {
+    var length = this.storage.length
+    return this.storage.clear(), length
+  }
+
   return TKWebStorageLibrary
 }))
