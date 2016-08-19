@@ -69,13 +69,13 @@ The underlying storage for the current browser.
 
 Summary
 
-- [TKWebStorage.get()](#tkwebstorageget)
-- [TKWebStorage.set()](#tkwebstorageset)
-- [TKWebStorage.remove()](#tkwebstorageremove)
-- [TKWebStorage.key()](#tkwebstoragekey)
+- [TKWebStorage.get()](#tkwebstoragegetkeyname)
+- [TKWebStorage.set()](#tkwebstoragesetkeynamekeyvalue)
+- [TKWebStorage.remove()](#tkwebstorageremovekeyname)
+- [TKWebStorage.key()](#tkwebstoragekeykeyindex)
 - [TKWebStorage.clear()](#tkwebstorageclear)
 
-### TKWebStorage.get()
+### TKWebStorage.get(keyName)
 Get the value for the given key.
 
 #### Parameter
@@ -84,7 +84,7 @@ Get the value for the given key.
 #### Returns
 `null|string` The value stored under the keyName key, or null if nothing was found.
 
-### TKWebStorage.set()
+### TKWebStorage.set(keyName, keyValue)
 Set the given value with the given key in the current storage.
 
 #### Parameters
@@ -94,7 +94,7 @@ Set the given value with the given key in the current storage.
 #### Returns
 `number|string` The value stored under the keyName key.
 
-### TKWebStorage.remove()
+### TKWebStorage.remove(keyName)
 Remove an item for the given key.
 
 #### Parameter
@@ -103,7 +103,7 @@ Remove an item for the given key.
 #### Returns
 `null|number|string` The value removed for the given key, or null if nothing was found.
 
-### TKWebStorage.key()
+### TKWebStorage.key(keyIndex)
 Get the key name at given index.
 
 #### Parameter
