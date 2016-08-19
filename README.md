@@ -69,10 +69,10 @@ The underlying storage for the current browser.
 
 Summary
 
-- [TKWebStorage.get()](#tkwebstoragegetkeyname)
-- [TKWebStorage.set()](#tkwebstoragesetkeynamekeyvalue)
-- [TKWebStorage.remove()](#tkwebstorageremovekeyname)
-- [TKWebStorage.key()](#tkwebstoragekeykeyindex)
+- [TKWebStorage.get(keyName)](#tkwebstoragegetkeyname)
+- [TKWebStorage.set(keyName, keyValue)](#tkwebstoragesetkeynamekeyvalue)
+- [TKWebStorage.remove(keyName)](#tkwebstorageremovekeyname)
+- [TKWebStorage.key(keyIndex)](#tkwebstoragekeykeyindex)
 - [TKWebStorage.clear()](#tkwebstorageclear)
 
 ### TKWebStorage.get(keyName)
@@ -119,6 +119,7 @@ Clear all items in the storage.
 `string` The number of item cleared.
 
 
+
 # What type of storage?
 
 The Web API for Storage exposes two type of storage, a `localStorage` and a `sessionStorage`.
@@ -143,13 +144,6 @@ var store = new ws('beerStorage')
 delete window.localStorage
 // Throw Error:
 var store = new ws()
-```
-
-The browser underlying storage is available under the `storage` property:
-
-``` javascript
-var session_store = new ws('sessionStorage')
-var is_true = session_store.storage === window.sessionStorage
 ```
 
 
