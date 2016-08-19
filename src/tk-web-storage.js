@@ -19,10 +19,13 @@
  */
 
 !(function (window, get_TKWebStorageLibrary) {
-  if (window && !window.ws) {
+  if (typeof angular === 'object') {
+    // TODO: AngularJS provider.
+    // angular.module('TKWebStorageLibrary', [])
+    //   .provider('TKWebStorage', [function () { }])
+  } else {
     window.ws = get_TKWebStorageLibrary()
   }
-  // TODO: AngularJS
 })(this, function get_TKWebStorageLibrary() {
 
   /**
@@ -70,6 +73,8 @@
 
   }
 
+
+
   TKWebStorageLibrary.prototype.get = _getItem
   TKWebStorageLibrary.prototype.getItem = _getItem
 
@@ -81,6 +86,8 @@
   function _getItem(keyName) {
     return this.storage.getItem(keyName)
   }
+
+
 
   TKWebStorageLibrary.prototype.set = _setItem
   TKWebStorageLibrary.prototype.setItem = _setItem
@@ -94,6 +101,8 @@
   function _setItem(keyName, keyValue) {
     return this.storage.setItem(keyName, keyValue)
   }
+
+
 
   TKWebStorageLibrary.prototype.remove = _removeItem
   TKWebStorageLibrary.prototype.removeItem = _removeItem

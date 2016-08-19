@@ -62,6 +62,7 @@ describe('TKWebStorageLibrary', function () {
       })
 
       it('should default to "localStorage".', function () {
+        var sut = new ws()
         assert.strictEqual(sut.storageType, 'localStorage')
       })
 
