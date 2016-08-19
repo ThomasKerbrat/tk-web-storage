@@ -69,43 +69,52 @@ The underlying storage for the current browser.
 
 Summary
 
-- [TKWebStorageLibrary.get](#tkwebstoragelibraryget)
-- [TKWebStorageLibrary.set](#tkwebstoragelibraryset)
-- [TKWebStorageLibrary.remove](#tkwebstoragelibraryremove)
-- [TKWebStorageLibrary.key](#tkwebstoragelibrarykey)
-- [TKWebStorageLibrary.clear](#tkwebstoragelibraryclear)
+- [TKWebStorageLibrary.get()](#tkwebstoragelibraryget)
+- [TKWebStorageLibrary.set()](#tkwebstoragelibraryset)
+- [TKWebStorageLibrary.remove()](#tkwebstoragelibraryremove)
+- [TKWebStorageLibrary.key()](#tkwebstoragelibrarykey)
+- [TKWebStorageLibrary.clear()](#tkwebstoragelibraryclear)
 
-### TKWebStorageLibrary.get
+### TKWebStorageLibrary.get()
 Get the value for the given key.
+
 #### Parameter
 1. `keyName`: `string` The name of the key to get the value.
+
 #### Returns
 `null|string` The value stored under the keyName key, or null if nothing was found.
 
-### TKWebStorageLibrary.set
+### TKWebStorageLibrary.set()
 Set the given value with the given key in the current storage.
+
 #### Parameters
 1. `keyName`: `string` The name of the key to set the value.
 2. `keyValue`: `number|string` The value to set.
+
 #### Returns
 `number|string` The value stored under the keyName key.
 
-### TKWebStorageLibrary.remove
+### TKWebStorageLibrary.remove()
 Remove an item for the given key.
+
 #### Parameter
 1. `keyName`: `string` The name of the key to remove the value.
+
 #### Returns
 `null|number|string` The value removed for the given key, or null if nothing was found.
 
-### TKWebStorageLibrary.key
+### TKWebStorageLibrary.key()
 Get the key name at given index.
+
 #### Parameter
 1. `keyIndex`: `number` The index of the key to retrieve.
+
 #### Returns
 `null|string` The key at keyIndex key, or null if index is out of bound.
 
-### TKWebStorageLibrary.clear
+### TKWebStorageLibrary.clear()
 Clear all items in the storage.
+
 #### Returns
 `string` The number of item cleared.
 
