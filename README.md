@@ -1,8 +1,8 @@
 # TKWebStorage
 
 TKWebStorage is a wrapper around the [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) API.
-I developped it as a personnal library to use in my projects, hence my initials in the name of the library.
-It will eventually be published on [npmjs.com](https://www.npmjs.com/) so it can be fetched easilly.
+I developed it as a personal library to use in my projects, hence my initials in the name of the library.
+It will eventually be published on [npmjs.com](https://www.npmjs.com/) so it can be fetched easily.
 
 ## How to use?
 
@@ -43,10 +43,10 @@ store.clear()          // returns: 1
 
 Summary
 
-- [TKWebStorage.localStorageAvailable](#TKWebStorage.localStorageAvailable)
-- [TKWebStorage.sessionStorageAvailable](#TKWebStorage.sessionStorageAvailable)
-- [TKWebStorage.storageType](#TKWebStorage.storageType)
-- [TKWebStorage.storage](#TKWebStorage.storage)
+- [TKWebStorage.localStorageAvailable](#tkwebstoragelocalstorageavailable)
+- [TKWebStorage.sessionStorageAvailable](#tkwebstoragesessionstorageavailable)
+- [TKWebStorage.storageType](#tkwebstoragestoragetype)
+- [TKWebStorage.storage](#tkwebstoragestorage)
 
 ### TKWebStorage.localStorageAvailable
 `boolean`
@@ -58,7 +58,7 @@ Tells if the `window.sessionStorage` is supported and available.
 
 ### TKWebStorage.storageType
 `string`
-The storage choosed when instanciating. Default to `'localStorage'`.
+The storage choose when instanciating. Default to `'localStorage'`.
 
 ### TKWebStorage.storage
 [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
@@ -69,11 +69,11 @@ The underlying storage for the current browser.
 
 Summary
 
-- [TKWebStorageLibrary.get](#TKWebStorageLibrary.get)
-- [TKWebStorageLibrary.set](#TKWebStorageLibrary.set)
-- [TKWebStorageLibrary.remove](#TKWebStorageLibrary.remove)
-- [TKWebStorageLibrary.key](#TKWebStorageLibrary.key)
-- [TKWebStorageLibrary.clear](#TKWebStorageLibrary.clear)
+- [TKWebStorageLibrary.get](#tkwebstoragelibraryget)
+- [TKWebStorageLibrary.set](#tkwebstoragelibraryset)
+- [TKWebStorageLibrary.remove](#tkwebstoragelibraryremove)
+- [TKWebStorageLibrary.key](#tkwebstoragelibrarykey)
+- [TKWebStorageLibrary.clear](#tkwebstoragelibraryclear)
 
 ### TKWebStorageLibrary.get
 Get the value for the given key.
@@ -112,7 +112,7 @@ Clear all items in the storage.
 
 # What type of storage?
 
-The Web API for Storage exposes two type of storages, a `localStorage` and a `sessionStorage`.
+The Web API for Storage exposes two type of storage, a `localStorage` and a `sessionStorage`.
 You can configure the type of storage you want with the first parameter of the constructor function.
 
 ``` javascript
@@ -123,7 +123,7 @@ var local_store_1 = new ws('localStorage')
 var local_store_2 = new ws()
 ```
 
-When instantiating the `TKWebStorage` type, the constructor test for the browser support and availability of the choosed storage type.
+When instantiating the `TKWebStorage` type, the constructor test for the browser support and availability of the choose storage type.
 If a wrong storage name is given, or if the storage is not available because of incognito mode, an `Error` is thrown.
 (Subject to change.)
 
