@@ -19,7 +19,7 @@ When you load the library in your browser, as of 0.0.0, it register the `ws` glo
 This `ws` variable holds the `TKWebStorageLibrary` type and must be instantiated in order to be used.
 
 `TKWebStorageLibrary` has the same API as a `Storage` object.
-It also exposes a simpler API (function name with the "Item" suffix).
+It also exposes a simpler API (function name without the "Item" suffix).
 
 ``` javascript
 var store = new ws()
